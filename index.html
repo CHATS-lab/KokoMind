@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KokoMind: Can Large Language Models Understand Social Interactions?</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon" href="img/gorilla.png" type="image/icon type">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
+    <script src="https://code.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="https://code.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://code.hcharts.cn/highcharts/modules/sankey.js"></script>
+    <!-- <script src="https://code.hcharts.cn/highcharts/modules/oldie.js"></script> -->
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> -->
+</head>
+
+<body>
+    <div id="nav">
+        <div id="icon">
+            <!-- <img src="img/logo.png" id="nav-icon"> -->
+            <a id="nav-button-kokomind" class="nav-button" href="#">KokoMind
+            </a>
+        </div>
+        <div>
+            <a class="nav-button" href="#introduction">Introduction</a>
+            <a class="nav-button" href="#dataset">Dataset</a>
+            <a class="nav-button" href="https://github.com/Liang-Qiu/KokoMind">Download</a>
+            <a class="nav-button" href="#evaluation">Results</a>
+            <a class="nav-button" href="#license">License</a>
+            <!-- <a class="nav-button" href="#conclusion">Conclusion</a> -->
+            <a class="nav-button" href="#acknowledgement">Acknowledgement</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="myhead">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="./img/gorilla.png" alt="gorilla logo" width="100">
+                </div>
+                <div class="col-md-8">
+                    <h1>
+                        <span style="color: var(--koko-color)">Koko</span><span
+                            style="color: var(--mind-color)">Mind</span>: Can LLMs Understand Social Interactions?
+                    </h1>
+                </div>
+
+            </div>
+            <div class="row">
+                <h3 class="blog-author">Authors:
+                    <a href="https://wyshi.github.io/">Weiyan Shi<sup>*</sup></a> and
+                    <a href="https://www.lqiu.info/">Liang Qiu<sup>*</sup></a> and
+                    <a href="https://www.linkedin.com/in/dehong-xu-61a947248/">Dehong Xu</a> and
+                    <a href="https://scholar.google.com/citations?user=rPB_BiwAAAAJ&hl=en">Pengwei Sui</a> and
+                    <a href="https://lupantech.github.io/">Pan Lu</a> and
+                    <a href="https://www.cs.columbia.edu/~zhouyu/">Zhou Yu</a>
+                </h3>
+                <i>TLDR: We introduce <span style="color: var(--koko-color)">Koko</span><span
+                        style="color: var(--mind-color)">Mind</span>, a dataset with multi-party social interactions to
+                    evaluate
+                    LLMs' social understanding abilities. GPT-4 tops the list, followed by Claude.</i>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <section id="introduction">
+            <h2>Introduction: Imagine an AI 🤖 at a cocktail party 🍻 </h2>
+            Imagine this: you're at a vibrant cocktail party 🍹, filled with the buzz of conversation and the clink of
+            glasses 🍻. You're
+            a laid-back observer 👀, tucked comfortably in a corner. Yet, you can still easily figure out the social
+            relations between
+            different people, understand what's going on, and even provide social suggestions by reading people's
+            verbal and
+            non-verbal cues.
+            <!-- <span class="tag emotion">Approved</span> -->
+            <!-- Prepare to be fascinated as we unveil the capabilities of these AI marvels
+                in an
+                interactive way. This demo promises a thrilling journey into the world of AI social comprehension. Don't
+                miss out! -->
+            <!-- Imagine this, put a human observer in a cocktail party.
+                This observer can be very laid back, but can still easily figure out the social relation between
+                different
+                people, understand what's going on, and provide social suggestions by reading people's verbal and
+                non-verbal cues.
+                If a language model can achieve this goal <strong>consistently</strong>, then it possesses social
+                abilities to certain extent. Wondering how these LLMs' are doing in understanding social situations?
+                Check out this demo! -->
+            <br>
+            <br>
+            If a large language model (LLM) could replicate this level of social aptitude, then we could say that it
+            possesses
+            certain social abilities. Curious how different LLMs perform when it comes to understanding and
+            navigating social
+            interactions? Check out these demos processed by AI models<sup>**</sup>!
+            <!-- <p style="font-size:20px;font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;">
+                There have been lots of discussions around LLM's capabilities to understand social situations on various
+                tasks including theory
+                of mind.
+                But we still lack a <strong>holistic</strong> way to evaluate of LLM's differnt kinds social abilities
+                <strong>continuously</strong>.
+                Many previous studies focuses on assessing models' certain ability in one aspect (e.g.,Tomi for theory
+                of mind, socialIQA for social commonsense) with a static test set using multiple choices or short
+                free-form text in a dyadic setting.
+                This could be prone to data contamination, ambuiguity in the questions and answers, and oversimplified
+                social dynamics.
+            </p> -->
+            <br>
+            <br>
+            <font size="2">
+                ** These videos are transcribed by <a href="https://openai.com/research/whisper">Whisper</a>.<br>
+                ** <a href="https://chat.openai.com/">ChatGPT</a>, a text-only model, is predicting emotions and
+                answering questions by reading the
+                interaction. <br>
+                ** <a href="https://chat.openai.com/">ChatGPT</a> also reads the conversation and answers different
+                questions related to social
+                understanding.<br>
+                ** For reference, <a href="https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K">CLIP</a>, a
+                vision-only model is also predicting facial expressions by looking at the
+                face.
+            </font>
+
+
+
+        </section>
+        <div class="tabs">
+            <input type="radio" name="tabs" id="tabone" checked="checked">
+            <label for="tabone">Demo 1</label>
+            <div class="tab">
+                <h4>Shrinking S01 E03 Sneak Peek</h4>
+                <div class="demo">
+                    <iframe src="video/demo1.mp4" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen
+                        style="position: absolute; clip-path: inset(2px 2px); top: 0; left: 0; width: 100%; height: 100%;">
+                    </iframe>
+                </div>
+            </div>
+
+            <input type="radio" name="tabs" id="tabtwo">
+            <label for="tabtwo">Demo 2</label>
+            <div class="tab">
+                <h4>Shrinking S01 E06 Just a Normal Day</h4>
+                <div class="demo">
+                    <iframe src="video/demo2.mp4" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen
+                        style="position: absolute; clip-path: inset(2px 2px); top: 0; left: 0; width: 100%; height: 100%;">
+                    </iframe>
+                </div>
+            </div>
+
+            <input type="radio" name="tabs" id="tabthree">
+            <label for="tabthree">Demo 3</label>
+            <div class="tab">
+                <h4>Shrinking S01 E07 You Wish</h4>
+                <div class="demo">
+                    <iframe src="video/demo3.mp4" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen
+                        style="position: absolute; clip-path: inset(3px 3px); top: 0; left: 0; width: 100%; height: 100%;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <!-- <section id="background">
+            <h2>Background</h2>
+            <p>Previous research has shown that large language models are able to perform a wide range of tasks, from
+                language translation to content generation. For our project, we used GPT-3 as the basis for our
+                experiments. We conducted our research using Python and several natural language processing libraries,
+                such as NLTK and spaCy.</p>
+        </section> -->
+
+        <br>
+        <section id="dataset">
+            <h2><span style="color: var(--koko-color)">Koko</span><span style="color: var(--mind-color)">Mind</span>
+                <img src="./img/gorilla.png" alt="gorilla logo" width="36"> : A
+                Multifaceted Evaluation Dataset of Social Interactions
+            </h2>
+            <a href="https://github.com/Liang-Qiu/KokoMind"><b>[Download <span
+                        style="color: var(--koko-color)">Koko</span><span style="color: var(--mind-color)">Mind</span>
+                    and evaluation codes to evaluate your own models!]</b></a> <br><br>
+            <span style="color: var(--koko-color)">Koko</span><span style="color: var(--mind-color)">Mind</span>
+            contains 150 complex <b>multi-party</b> social interactions (50 per source) with <b>free-text</b> questions
+            and
+            answers.
+            To ensure diversity and
+            scalability and
+            avoid data contamination, all the social interactions, questions, and answers are generated by GPT-4 and
+            verified by
+            human experts later. <br><br>
+            <b>These generations are based on three different sources:</b><br><br>
+            <ul>
+                <li><b>🤖 GPT-4-Only Generation</b>: This subset is created solely by GPT-4 through
+                    prompting, without grounding on existing sources.</li>
+                <li><b>🎦 Movie-based Generation</b>: To avoid data contamination, this portion of the data is grounded
+                    on
+                    diverse scenarios pulled from movies released after
+                    2022. GPT-4 shapes these situations, maintaining the core essence while adding its own elements.
+                </li>
+                <li><b>🧠 ToMi-based Generation</b>: This segment contains data backboned by a simulated dataset, <a
+                        href="https://github.com/facebookresearch/ToMi">ToMi</a>, which involves moving physical objects
+                    to different places, a classic test for theory of mind. These social interactions are again
+                    embellished and expanded by
+                    GPT-4.
+                </li>
+                </ol>
+
+                <br>
+                &nbsp; &nbsp; &nbsp; &nbsp;<b>For each social interaction, we ask various questions designed to probe
+                    the
+                    following aspects of social
+                    understanding. </b>
+                <br><br>
+
+                <ul>
+                    <li><b>🧠 Theory of Mind</b>: Questions evaluating understanding of others' mental states and
+                        perspectives.
+                    </li>
+                    <li><b>👍 Social Norm</b>: Questions aiming to discern societal values and norms within the
+                        situations.
+                    </li>
+                    <li><b>😃 Emotion Recognition</b>: Questions targeted at identifying and understanding emotional
+                        elements within
+                        the
+                        context.
+                    </li>
+                    <li><b>👨‍👩‍👧 Social Relation</b>: Queries focusing on interpersonal dynamics and relationships.
+                    </li>
+                    <li><b>🤔 Counterfactual Questions</b>: Hypothetical queries designed to explore alternative
+                        outcomes or
+                        possibilities.</li>
+                    <li><b>📝 Social Advice</b>: Questions eliciting advice or action recommendations relevant to
+                        the
+                        given
+                        situation.</li>
+                    </ol>
+                    <br>
+                    <div style="text-align: center; font-size: 24px;">
+                        Check out these examples in <span style="color: var(--koko-color)">Koko</span><span
+                            style="color: var(--mind-color)">Mind</span> <img src="./img/gorilla.png" alt="gorilla logo"
+                            width="36">!
+                    </div>
+                    <!-- <br> -->
+                    <div class="text-container">
+                        <div class="row">
+                            <div class="col">
+                                <form action="#">
+                                    <label for="source-select" style="display: block;margin: 10px;">Source</label>
+                                    <select name="source-select" id="source-select" onchange="change_context()">
+                                        <option value="general">GPT-4-only</option>
+                                        <option value="movie">Movie</option>
+                                        <option value="tomi">ToMi</option>
+                                    </select>
+
+                                </form>
+                            </div>
+
+                            <div class="col">
+                                <form action="#">
+                                    <label for="question-select" style="display: block;margin: 10px">Question
+                                        Type</label>
+                                    <select name="question-select" id="question-select" onchange="change_question()">
+                                        <option value="tom">Theory of Mind</option>
+                                        <option value="social_norm">Social Norm</option>
+                                        <option value="emotion">Emotion Recognition</option>
+                                        <option value="social_relation">Social Relation</option>
+                                        <option value="counterfactual">Counterfactual</option>
+                                        <option value="social_advice">Social Advice</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="text-box" style="margin: 20px;">
+                            <div class="text-wrapper">
+                                <div class="text">
+                                    <!-- <span id="generation"></span> -->
+                                    <h4> <strong>Interaction: <img src="./img/gorilla.png" alt="gorilla logo"
+                                                width="36"></strong> </h4>
+
+                                    <gen id="generation">
+
+                                        <!-- Jun (nervously sipping coffee, Male, 28, marketing executive): I simply don't understand why
+                            things got so heated...<br /> -->
+                                        Jun (<span class="tag emotion">nervously sipping coffee</span>
+                                        <span class="tag gender">Male</span>
+                                        <span class="tag age">28</span>
+                                        <span class="tag role">marketing executive</span>): I simply don't understand
+                                        why
+                                        things
+                                        got
+                                        so heated...<br />
+                                        <!-- Kyung (unsure, Female, 32, nurse): Maybe it's just a misunderstanding. Don't worry too much
+                            about it.<br /> -->
+                                        Kyung (<span class="tag emotion">unsure</span>
+                                        <span class="tag gender">Female</span>
+                                        <span class="tag age">32</span>
+                                        <span class="tag role">nurse</span>): Maybe it's just a misunderstanding. Don't
+                                        worry
+                                        too
+                                        much
+                                        about it.<br />
+                                        <!-- Min (displeased, Male, 24, student): I couldn't even hear what Ji-ho was whispering about
+                            earlier.<br /> -->
+                                        Min (<span class="tag emotion">displeased</span>
+                                        <span class="tag gender">Male</span>
+                                        <span class="tag age">24</span>
+                                        <span class="tag role">student</span>): I couldn't even hear what Ji-ho was
+                                        whispering
+                                        about
+                                        earlier.<br />
+                                        <!-- Hana (surprised, Female, 45, housewife): I must've missed that too.<br /> -->
+                                        Hana (<span class="tag emotion">surprised</span>
+                                        <span class="tag gender">Female</span>
+                                        <span class="tag age">45</span>
+                                        <span class="tag role">housewife</span>): I must've missed that too.<br />
+                                        <!-- Ji-ho (whispering to Hae-won, Male, 40, manager): You've noticed the tension too,
+                            right?<br /> -->
+                                        Ji-ho (<span class="tag emotion">whispering to Hae-won</span>
+                                        <span class="tag gender">Male</span>
+                                        <span class="tag age">40</span>
+                                        <span class="tag role">manager</span>): You've noticed the tension too,
+                                        right?<br />
+                                        <!-- Hae-won (whispers back, Female, 35, teacher): Yes, Ji-ho. But I think it's best if we don't
+                            get involved.<br /> -->
+                                        Hae-won (<span class="tag emotion">whispers back</span>
+                                        <span class="tag gender">Female</span>
+                                        <span class="tag age">35</span>
+                                        <span class="tag role">teacher</span>): Yes, Ji-ho. But I think it's best if we
+                                        don't
+                                        get involved.<br />
+                                        <!-- Dae (jovial, Male, 55, gardener): Oh, come on, everyone! We're here to enjoy our time
+                            together.<br /> -->
+                                        Dae (<span class="tag emotion">jovial</span>
+                                        <span class="tag gender">Male</span>
+                                        <span class="tag age">55</span>
+                                        <span class="tag role">gardener</span>): Oh, come on, everyone! We're here to
+                                        enjoy
+                                        our
+                                        time
+                                        together.<br />
+                                        <!-- Jin (quietly concerned, Female, 60, retired): I hope nothing worse happens out of this
+                            situation.<br /> -->
+                                        Jin (<span class="tag emotion">quietly concerned</span>
+                                        <span class="tag gender">Female</span>
+                                        <span class="tag age">60</span>
+                                        <span class="tag role">retired</span>): I hope nothing worse happens out of this
+                                        situation.<br />
+                                        <!-- Eun (unaware of what's happening, Male, 22, barista): Enjoy your coffee and pastries!<br />
+                            Soo-min (troubled but smiling, Female, 52, artist): Let's try to put this behind us and
+                            think
+                            positively.<br /> -->
+                                        Eun (<span class="tag emotion">unaware of what's happening</span>
+                                        <span class="tag gender">Male</span>
+                                        <span class="tag age">22</span>
+                                        <span class="tag role">barista</span>): Enjoy your coffee and pastries!<br />
+                                        <!-- Soo-min (troubled but smiling, Female, 52, artist): Let's try to put this behind us and
+                            think
+                            positively.<br /> -->
+                                        Soo-min (<span class="tag emotion">troubled but smiling</span>
+                                        <span class="tag gender">Female</span>
+                                        <span class="tag age">52</span>
+                                        <span class="tag role">artist</span>): Let's try to put this behind us and think
+                                        positively.<br />
+
+                                    </gen>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-wrapper">
+                                <div class="text">
+                                    <span> <strong>Question:</strong> </span>
+                                    <gen id="question">
+                                        In Hae-won's mind, what does she think Ji-ho is feeling about the tension in the
+                                        group?
+                                    </gen>
+                                </div>
+                                <div class="text">
+                                    <span> <strong>Answer:</strong> </span>
+                                    <gen id="answer">Hae-won thinks Ji-ho is concerned about the tension in the group.
+                                    </gen>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="text-box">
+                                    <div class="text">
+                                        <span> GPT-4 Evaluation: </span>
+                                    </div>
+                                    <div class="text">
+                                        <gen>GPT-4 rating ...</gen>
+                                    </div>
+                                </div> -->
+                    </div>
+                    <div id="container"></div>
+
+                    <!-- One key
+            challenge in model evaluation is data contamination, i.e., the model has already seen the evaluation set
+            during training. To address this challenge,
+
+            For each generated social situation, we will ask questions related to various aspects of social
+            abilities:
+            (1) cover various aspects of social intelligence
+            - theory of mind
+            - social value
+            - social relation
+            - emotion
+
+            (2) can self-evolve
+            - a golden human-verified test set +
+
+            (3) involve complex group dynamics
+            - multi-party
+            - multi-modal
+            - varioius cultural backgrounds
+            - different settings (professional, daily life, etc)
+            - etc -->
+                    </p>
+
+        </section>
+
+
+        <section id="evaluation">
+            <h2>Results: GPT-4 tops the list, followed by Claude in many cases</h2>
+            <p></p>
+            We evaluated different models following <a href="https://github.com/tatsu-lab/alpaca_eval">AlpacaEval</a>
+            with text-davinci-003 as reference,
+            and performed an ablation study, where we removed non-verbal cues in the parenthesis (e.g., nervously
+            sipping coffee, etc) from the context. Here are some interesting takeaways.<br><br>
+            1. Among the two LLM-based evaluators, GPT-4 exhibits greater certainty and confidence in identifying the
+            winning model, in comparison to Claude. <br><br>
+            2. When the context has no non-verbal cues, and the interaction is either solely generated by
+            GPT-4 or grounded on movies, Claude performs better than GPT-4 (agreed by both evaluators); while if the
+            context contains non-verbal cues, GPT-4 is always better than Claude. One possible explanation is GPT-4
+            is a multi-modal model, so as expected, it can better understand extra non-verbal information. Also note
+            that
+            when presented with non-verbal cues, the LLM-based evaluator perceives that the top-performing models have a
+            more substantial advantage over less accomplished models. <br><br>
+            3. One may be wondering that if the social interactions are generated by GPT-4, does that mean GPT-4 can
+            already answer these questions? It seems that the source plays a smaller role compared to the type of
+            questions.
+            <br><br>
+            4. It appears that LLM-based evaluators find it easier to determine the superior model in tasks unrelated
+            to theory-of-mind, especially from samples generated from ToMi dataset. This may be due to the fact that
+            even the LLM evaluator may struggle to discern the correct answer in theory-of-mind contexts. <br><br>
+            5. Claude is good at giving social advice in many cases.
+
+
+            <div style="text-align: center; font-size: 24px;">
+                Play around with these results!
+            </div>
+            <div class="text-container">
+                <div class="row">
+                    <div class="col">
+                        <form action="#">
+                            <label for="fig-reviewer" style="display: block;margin: 10px;">Evaluator</label>
+                            <select name="fig-reviewer" id="fig-reviewer" onchange="fig_change()">
+                                <option value="reviewer-gpt4">GPT-4</option>
+                                <option value="reviewer-claude">Claude v1.3</option>
+                            </select>
+
+                        </form>
+                    </div>
+
+                    <div class="col">
+                        <form action="#">
+                            <label for="fig-context" style="display: block;margin: 10px">Context</label>
+                            <select name="fig-context" id="fig-context" onchange="fig_change()">
+                                <option value="context-emotion">w/ non-verbal cues</option>
+                                <option value="context-noemotion">w/o non-verbal cues</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <form action="#">
+                            <label for="fig-source" style="display: block;margin: 10px">Source</label>
+                            <select name="fig-source" id="fig-source" onchange="fig_change()">
+                                <option value="source-total">Total</option>
+                                <option value="source-general">GPT-4-only</option>
+                                <option value="source-movie">Movie</option>
+                                <option value="source-tomi">ToMi</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <form action="#">
+                            <label for="fig-question" style="display: block;margin: 10px">Question</label>
+                            <select name="fig-question" id="fig-question" onchange="fig_change()">
+                                <option value="question-total">Total</option>
+                                <option value="question-tom">Theory of Mind</option>
+                                <option value="question-social_norm">Social Norm</option>
+                                <option value="question-emotion">Emotion Recognition</option>
+                                <option value="question-social_relation">Social Relation</option>
+                                <option value="question-counterfactual">Counterfactual</option>
+                                <option value="question-social_advice">Social Advice</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="text-container">
+                <img id="fig" src="img/emotion_yes/gpt4/total/Total/win_rate.png">
+            </div>
+        </section>
+
+        <!-- <section id="analysis">
+            <h2>Analysis</h2>
+            <p>Our analysis of the results indicates that GPT-3 has significant potential for improving natural language
+                processing tasks. However, there are still areas where further research is needed. For example, GPT-3
+                has difficulty with understanding sarcasm and irony, which are important elements of human
+                communication.</p>
+        </section> -->
+
+
+
+
+
+        <section id="limitation">
+            <h2>Limitations</h2>
+            Our project, while exciting in many respects, does have certain limitations. First, the size of <span
+                style="color: var(--koko-color)">Koko</span><span style="color: var(--mind-color)">Mind</span>
+            is relatively
+            small, which could limit the broad applicability and comprehensiveness of our conclusions. Secondly, all
+            of the
+            interactions in <span style="color: var(--koko-color)">Koko</span><span
+                style="color: var(--mind-color)">Mind</span> are generated by GPT-4 and require human verification,
+            which makes it hard to
+            scale up the
+            dataset. Besides, although
+            <span style="color: var(--koko-color)">Koko</span><span style="color: var(--mind-color)">Mind</span>
+            provides human-verfied answers in the dataset, we did not use these answers as a reference
+            during evaluation, and as these answers are generated by GPT-4, they may be biased towards GPT-4 and
+            future research can focus on how to evaluate models with human-verified machine-generated reference
+            answers. Next, all the models we evaluated were versions prior to June 1, 2023. It is possible that
+            newly released models may have better
+            performance. Despite these limitations, we envision <span style="color: var(--koko-color)">Koko</span><span
+                style="color: var(--mind-color)">Mind</span> as a springboard for future
+            investigations
+            related to social
+            intellignece, multi-modal language models, etc.
+        </section>
+
+        <section id="license">
+            <h2>License</h2>
+            This project is an early-stage research showcase, designed solely for non-commercial purposes. It
+            adheres to <a href="https://openai.com/policies/terms-of-use">OpenAI's data usage terms</a> , and
+            <a
+                href="https://chrome.google.com/webstore/detail/sharegpt-share-your-chatg/daiacboceoaocpibfodeljbdfacokfjb">ShareGPT's
+                privacy practices</a>. Let us know if you spot any
+            potential
+            violations. The software's code is available under the Apache License 2.0.
+
+        </section>
+
+        <section id="acknowledgement">
+            <h2>Acknowledgement</h2>
+            We would like to thank Yejin Choi from UW, Louis-Philippe Morency from CMU, Jason Weston from Meta, and
+            Diyi Yang from Stanford for their
+            enlightening
+            dialogue and constructive input.
+
+        </section>
+
+        <section id="Citation">
+            <h2>Citation</h2>
+            @misc{kokomind2023,
+            title = {KokoMind: Can Large Language Models Understand Social Interactions?},
+            url = {},
+            author = {Shi, Weiyan and Qiu, Liang and Xu, Dehong and Sui, Pengwei and Lu, Pan and Yu, Zhou},
+            month = {July},
+            year = {2023}
+            }
+
+        </section>
+
+        <script src="scripts.js"></script>
+
+    </div>
+
+    <!-- <footer>
+        <p>Thank you for visiting our webpage.</p>
+        <p>To see the code for our project, please visit our GitHub repository at: <a href="[insert link here]">[insert
+                link here]</a></p>
+    </footer> -->
+
+</body>
+
+</html>
