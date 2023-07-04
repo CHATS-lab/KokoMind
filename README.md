@@ -1,4 +1,4 @@
-# <img src="./website/img/gorilla.png" style="width:10%; height:auto;"> KokoMind 
+# KokoMind 
 
 [![License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://github.com/CHATS-lab/KokoMind/blob/main/LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/release/python-390/)
@@ -8,6 +8,19 @@ This is the repo for KokoMind, a dataset with multi-party social interactions to
 - The evaluation [data](https://github.com/CHATS-lab/KokoMind/tree/main/data) of social interactions.
 - The [code](https://github.com/CHATS-lab/KokoMind/tree/main/eval) for evaluating the model.
 - The code for [KokoMind website](https://chats-lab.github.io/KokoMind).
+
+[[Project Page](https://chats-lab.github.io/KokoMind/)] [Paper]
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/CHATS-lab/KokoMind/main/website/img/gorilla.png" width="10%"> <br>
+  Logo for <b>KokoMind</b>.
+</p>
+
+## News
+
+- **[2023.07.05]** KokoMind is releaded at https://chats-lab.github.io/KokoMind/.
+
+
 
 ## Dataset
 
