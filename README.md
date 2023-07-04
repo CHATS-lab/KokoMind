@@ -12,7 +12,7 @@ This is the repo for KokoMind, a dataset with multi-party social interactions to
 [[Project Page](https://chats-lab.github.io/KokoMind/)] [Paper]
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/CHATS-lab/KokoMind/main/website/img/gorilla.png" width="10%"> <br>
+    <img src="./website/img/gorilla.png" width="10%"> <br>
   Logo for <b>KokoMind</b>.
 </p>
 
