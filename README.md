@@ -18,7 +18,7 @@ This is the repo for **KokoMind**, a dataset with multi-party social interaction
 
 ## News
 
-- **[2023.07.05]** **KokoMind** is releaded at https://chats-lab.github.io/KokoMind/.
+- **[2023.07.05]** **KokoMind** is released at https://chats-lab.github.io/KokoMind/.
 
 
 
