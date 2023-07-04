@@ -131,7 +131,7 @@ data = [
             "Interaction": [
                 "Mariana (folds arms, 25-year old female teacher): I know you're all excited about the competition, but we need to work harder.",
                 "Emilio (laughs bitterly, 32-year old male professional dancer): Who are you to judge my abilities? I've danced Tango across the world.",
-                "Mariana: Emilio, don't take it personally. It's our responsibility to help each other.",
+                "Mariana (folds arms, 25-year old female teacher): Emilio, don't take it personally. It's our responsibility to help each other.",
                 "Dalia (sighs, 21-year old female student): Emilio is right, Mariana. We should respect the experience.",
                 "Juan (clenches fists, 28-years old male student): Emilio, why do you always have to make things difficult?",
                 "Juliana (winks at Emilio, 26-year old aspiring female dancer): Emilio, I think you're amazing. Can you help me with my stance?",
@@ -1184,33 +1184,37 @@ function change_context() {
     
     var context = ""
     for(let i=0; i<data[source_index]["data"]["Interaction"].length; i++){
-        context += data[source_index]["data"]["Interaction"][i].split("(", 1) + "("
-        var tags = data[source_index]["data"]["Interaction"][i].split("(", 2)[1].split(")")[0].split(", ")
-        if (source_selected == 'tomi' || source_selected == 'movie') {
-            for(let j=0; j<tags.length; j++){
-                if (j == tags.length-1) {
-                    context += '<span class="tag emotion">'+tags[j]+"</span>"
-                }else{
-                    context += '<span class="tag emotion">'+tags[j]+"</span>&nbsp;"
+        if (!data[source_index]["data"]["Interaction"][i].includes("(")) {
+            context += data[source_index]["data"]["Interaction"][i] + "<br />"
+        }else{
+            context += data[source_index]["data"]["Interaction"][i].split("(", 1) + "("
+            var tags = data[source_index]["data"]["Interaction"][i].split("(", 2)[1].split(")")[0].split(", ")
+            if (source_selected == 'tomi' || source_selected == 'movie') {
+                for(let j=0; j<tags.length; j++){
+                    if (j == tags.length-1) {
+                        context += '<span class="tag emotion">'+tags[j]+"</span>"
+                    }else{
+                        context += '<span class="tag emotion">'+tags[j]+"</span>&nbsp;"
+                    }
                 }
             }
-        }
-        else if (source_selected == 'general') {
-            tag_list = ['emotion', 'gender', 'age', 'role']
-            for(let j=0; j<tags.length; j++){
-                if (j > 3) {
-                    tag_index = 3;
-                }else{
-                    tag_index = j;
-                }
-                if (j == tags.length-1) {
-                    context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>"
-                }else{
-                    context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>&nbsp;"
+            else if (source_selected == 'general') {
+                tag_list = ['emotion', 'gender', 'age', 'role']
+                for(let j=0; j<tags.length; j++){
+                    if (j > 3) {
+                        tag_index = 3;
+                    }else{
+                        tag_index = j;
+                    }
+                    if (j == tags.length-1) {
+                        context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>"
+                    }else{
+                        context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>&nbsp;"
+                    }
                 }
             }
+            context += ")"+ data[source_index]["data"]["Interaction"][i].split(")", 2)[1] + "<br />"
         }
-        context += ")"+ data[source_index]["data"]["Interaction"][i].split(")", 2)[1] + "<br />"
     }
 
     document.getElementById("generation").innerHTML = context;
@@ -1247,33 +1251,37 @@ function change_question() {
     
     var context = ""
     for(let i=0; i<data[source_index]["data"]["Interaction"].length; i++){
-        context += data[source_index]["data"]["Interaction"][i].split("(", 1) + "("
-        var tags = data[source_index]["data"]["Interaction"][i].split("(", 2)[1].split(")")[0].split(", ")
-        if (source_selected == 'tomi' || source_selected == 'movie') {
-            for(let j=0; j<tags.length; j++){
-                if (j == tags.length-1) {
-                    context += '<span class="tag emotion">'+tags[j]+"</span>"
-                }else{
-                    context += '<span class="tag emotion">'+tags[j]+"</span>&nbsp;"
+        if (!data[source_index]["data"]["Interaction"][i].includes("(")) {
+            context += data[source_index]["data"]["Interaction"][i] + "<br />"
+        }else{
+            context += data[source_index]["data"]["Interaction"][i].split("(", 1) + "("
+            var tags = data[source_index]["data"]["Interaction"][i].split("(", 2)[1].split(")")[0].split(", ")
+            if (source_selected == 'tomi' || source_selected == 'movie') {
+                for(let j=0; j<tags.length; j++){
+                    if (j == tags.length-1) {
+                        context += '<span class="tag emotion">'+tags[j]+"</span>"
+                    }else{
+                        context += '<span class="tag emotion">'+tags[j]+"</span>&nbsp;"
+                    }
                 }
             }
-        }
-        else if (source_selected == 'general') {
-            tag_list = ['emotion', 'gender', 'age', 'role']
-            for(let j=0; j<tags.length; j++){
-                if (j > 3) {
-                    tag_index = 3;
-                }else{
-                    tag_index = j;
-                }
-                if (j == tags.length-1) {
-                    context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>"
-                }else{
-                    context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>&nbsp;"
+            else if (source_selected == 'general') {
+                tag_list = ['emotion', 'gender', 'age', 'role']
+                for(let j=0; j<tags.length; j++){
+                    if (j > 3) {
+                        tag_index = 3;
+                    }else{
+                        tag_index = j;
+                    }
+                    if (j == tags.length-1) {
+                        context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>"
+                    }else{
+                        context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>&nbsp;"
+                    }
                 }
             }
+            context += ")"+ data[source_index]["data"]["Interaction"][i].split(")", 2)[1] + "<br />"
         }
-        context += ")" + data[source_index]["data"]["Interaction"][i].split(")", 2)[1] + "<br />"
     }
 
     document.getElementById("generation").innerHTML = context;
@@ -1339,25 +1347,26 @@ Highcharts.chart('container', {
     series: [{
         keys: ['from', 'to', 'weight'],
         data: [
-            ['General', 'ToM', 48 ],
-            ['General', 'Social Norm', 28 ],
-            ['General', 'Emotion', 48 ],
-            ['General', 'Social Relation', 44 ],
-            ['General', 'Counterfactual', 28 ],
-            ['General', 'Social Advice', 29 ], 
-            ['Movie', 'ToM', 47 ],
-            ['Movie', 'Social Norm', 36 ],
-            ['Movie', 'Emotion', 33 ],
-            ['Movie', 'Social Relation', 40 ],
-            ['Movie', 'Counterfactual', 43 ],
-            ['Movie', 'Social Advice', 46 ], 
-            ['ToMi', 'ToM', 300 ]
+            ['GPT-4-only', 'ToM', 48 ],
+            ['GPT-4-only', 'Social Norm', 28 ],
+            ['GPT-4-only', 'Emotion', 48 ],
+            ['GPT-4-only', 'Social Relation', 44 ],
+            ['GPT-4-only', 'Counterfactual', 28 ],
+            ['GPT-4-only', 'Social Advice', 29 ], 
+            ['Movie-based', 'ToM', 47 ],
+            ['Movie-based', 'Social Norm', 36 ],
+            ['Movie-based', 'Emotion', 33 ],
+            ['Movie-based', 'Social Relation', 40 ],
+            ['Movie-based', 'Counterfactual', 43 ],
+            ['Movie-based', 'Social Advice', 46 ], 
+            ['ToMi-based', 'ToM', 300 ]
         ],
         type: 'sankey',
         name: 'KokoMind'
     }]
 });
 
+// left fig
 var fig_source_index = 0;
 var fig_question_index = 0;
 
@@ -1466,6 +1475,169 @@ function fig_change() {
     
     // var img = document.createElement('img');
     var img = document.getElementById('fig');
+    var path = "img/"
+    if (context_selected == 'context-emotion'){
+        path += "emotion_yes/"
+    }
+    else{ 
+        path += "emotion_no/"
+    }
+
+    if (reviewer_selected == 'reviewer-gpt4'){
+        path += "gpt4/"
+    }
+    else{ 
+        path += "claude/"
+    }
+
+    if (source_selected == 'source-total'){
+        path += "total/"
+    }
+    else if (source_selected == 'source-general'){ 
+        path += "general/"
+    }
+    else if (source_selected == 'source-movie'){ 
+        path += "movie/"
+    }
+    else if (source_selected == 'source-tomi'){ 
+        path += "tomi/"
+        question_selected = 'question-tom'
+    }
+    
+    if (question_selected == 'question-total'){
+        path += "Total/"
+    }
+    else if (question_selected == 'question-tom'){ 
+        path += "ToM/"
+    }
+    else if (question_selected == 'question-social_norm'){ 
+        path += "Social Norm/"
+    }
+    else if (question_selected == 'question-emotion'){ 
+        path += "Emotion/"
+    }
+    else if (question_selected == 'question-social_relation'){ 
+        path += "Social Relation/"
+    }
+    else if (question_selected == 'question-counterfactual'){ 
+        path += "Counterfactual/"
+    }
+    else if (question_selected == 'question-social_advice'){ 
+        path += "Advice/"
+    }
+    img.src = path + 'win_rate.png';
+    // document.getElementById('container').appendChild(img);
+}
+
+// right fig
+var fig1_source_index = 0;
+var fig1_question_index = 0;
+
+document.getElementById('fig1-source').addEventListener('change', function() {
+    let secondSelect = document.getElementById('fig1-question');
+
+    // Clear the second dropdown
+    secondSelect.innerHTML = "";
+
+    // Check the selected option of the first dropdown
+    if (this.value == 'source-tomi') {
+        let option = document.createElement('option');
+        option.value = 'question-tom';
+        option.text = 'Theory of Mind';
+        
+        secondSelect.add(option);
+        fig1_question_index = 1;
+    }
+    else{
+        let option0 = document.createElement('option');
+        option0.value = 'question-total';
+        option0.text = 'Total';
+
+        let option1 = document.createElement('option');
+        option1.value = 'question-tom';
+        option1.text = 'Theory of Mind';
+
+        let option2 = document.createElement('option');
+        option2.value = 'question-social_norm';
+        option2.text = 'Social Norm';
+
+        let option3 = document.createElement('option');
+        option3.value = 'question-emotion';
+        option3.text = 'Emotional Change';
+
+        let option4 = document.createElement('option');
+        option4.value = 'question-social_relation';
+        option4.text = 'Social Relation';
+
+        let option5 = document.createElement('option');
+        option5.value = 'question-counterfactual';
+        option5.text = 'Counterfactual';
+
+        let option6 = document.createElement('option');
+        option6.value = 'question-social_advice';
+        option6.text = 'Social Advice';
+
+        secondSelect.add(option0);
+        secondSelect.add(option1);
+        secondSelect.add(option2);
+        secondSelect.add(option3);
+        secondSelect.add(option4);
+        secondSelect.add(option5);
+        secondSelect.add(option6);
+
+        secondSelect.options[fig1_question_index].selected = true;
+    }
+});
+
+function fig1_change() {
+    // var vs = object.value;
+    var reviewer_selected = document.getElementById("fig1-reviewer").value;
+    var context_selected = document.getElementById("fig1-context").value;
+
+    var source_selected = document.getElementById("fig1-source").value;
+    var question_selected = document.getElementById("fig1-question").value;
+
+    // source select
+    // var source_index = 0;
+    if (source_selected == 'source-total'){
+        fig1_source_index = 0;
+    }
+    else if(source_selected == 'source-general'){
+        fig1_source_index = 1;
+    }
+    else if (source_selected == 'source-movie'){
+        fig1_source_index = 2;
+    }
+    else if (source_selected == 'source-tomi'){
+        fig1_source_index = 3;
+    }
+
+    // question select
+    // var question_index = 0;
+    if (question_selected == 'question-total'){
+        fig1_question_index = 0;
+    }
+    else if (question_selected == 'question-tom'){
+        fig1_question_index = 1;
+    }
+    else if (question_selected == 'question-social_norm'){
+        fig1_question_index = 2;
+    }
+    else if (question_selected == 'question-emotion'){
+        fig1_question_index = 3;
+    }
+    else if (question_selected == 'question-social_relation'){
+        fig1_question_index = 4;
+    }
+    else if (question_selected == 'question-counterfactual'){
+        fig1_question_index = 5;
+    }
+    else if (question_selected == 'question-social_advice'){
+        fig1_question_index = 6;
+    }
+    
+    // var img = document.createElement('img');
+    var img = document.getElementById('fig1');
     var path = "img/"
     if (context_selected == 'context-emotion'){
         path += "emotion_yes/"

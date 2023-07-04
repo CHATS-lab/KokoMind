@@ -1,17 +1,32 @@
 /* some constants used throughout the website*/
+@font-face {
+    font-family: 'MyFont';
+    src: url('../font/Manrope/static/Manrope-Light.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('../font/Manrope/static/Manrope-SemiBold.ttf') format('truetype');
+    font-weight: bold;
+}
+
 :root {
-    --nav-font: sans-serif;
+    --nav-font: MyFont;
+    /* --nav-font: system-ui; */
     --nav-background-color: #212529;
     --nav-button-color: white;
-    --nav-hover-color: #FFD100;
+    --nav-hover-color: #60697b;
     --body-font-color: #212529;
-    --h1-color: #343f52;
-    --h2-color: #212529;
-    --a-color: #1859c2;
+    --h1-color: #222426;
+    --h2-color: #0e0e0e;
+    --a-color: #798dc5;
     --p-color: #60697b;
     --li-color: #60697b;
-    --koko-color: #573b88;
-    --mind-color: #834ba0;
+    /* --koko-color: #573b88;
+    --mind-color: #834ba0; */
+    --koko-color: #423b3c;
+    --mind-color: #76696d;
     --secondary-dark-color: #9496a5;
     --tag-color-one: #e0fbf6;
     --tag-color-text-one: #58c2a9;
@@ -31,7 +46,7 @@
     --box-color-2: #d3e6ff;
     --box-color-3: #ffd9d9;
     --box-color-4: #daffe5;
-    --task-color: #777982;
+    --task-color: #ecf0f1;
     --text-decoration: none;
 }
 
@@ -83,9 +98,9 @@ body {
     font-family: var(--nav-font);
     font-size: 20px;
     color: #60697b;
-    background: #ecf0f1;
+    background: #fff;
     margin: 0;
-    padding: 0 1em 1em;
+    padding: 0em 0em 2em 0em;
 }
 
 header {
@@ -101,12 +116,14 @@ header {
 
 h1 {
     width: 130%;
-    font-size: 16px;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+    /* font-size: 16px; */
+    margin-top: 10;
+    margin-bottom: -20px;
+    margin-left: -50px;
     font-weight: 700;
-    line-height: 1.2;
-    color: var(--h1-font);
+    line-height: 2.7;
+    font-family: var(--nav-font);
+    color: var(--h1-color);
 }
 
 h2 {
@@ -115,29 +132,31 @@ h2 {
     padding-bottom: 10px;
     font-weight: 700;
     line-height: 1.2;
-    color: var(--h2-font);
+    color: var(--h2-color);
+    font-family: var(--nav-font);
 }
 
 h3 {
-    font-size: 24px;
+    font-size: 26px;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-weight: 700;
+    /* font-weight: 700; */
     line-height: 1.2;
-    color: var(--h2-font);
+    color: var(--p-color);
+    font-family: var(--nav-font);
+    text-decoration: none;
 }
 
 p {
     font-size: 18px;
     /* font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; */
     font-family: var(--nav-font);
+    word-spacing: 0.1rem;
     color: var(--p-color);
-    margin-left: 20px;
-    margin-right: 30px;
 }
 
 li {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--li-color);
 }
 
@@ -150,6 +169,7 @@ li {
 a {
     color: var(--a-color);
     text-decoration: none;
+    font-family: var(--nav-font);
 }
 
 
@@ -160,23 +180,26 @@ main {
 }
 
 select {
-    font-size: 20px;
-    min-width: 15em;
+    font-size: 18px;
+    min-width: 14em;
     margin-bottom: 1em;
     margin-top: 20px;
+    margin-left: -5px;
+    margin-right: -10px;
     /* font-family: cursive, sans-serif; */
     font-family: var(--nav-font);
     outline: 0;
     background: #2a2f3b;
     color: #fff;
     border: 10px solid #2a2f3b;
-    padding: 7px;
+    padding: 3px;
     border-radius: 0.5em;
 }
 
 /* Dropdown styles */
 .blog-author {
     padding-bottom: 1em;
+    padding-left: 5em;
     text-align: center;
     margin: 0.75em 0;
     font-weight: 600;
@@ -184,10 +207,10 @@ select {
 }
 
 .myhead {
-    background-color: #e9ecef;
+    background-color: var(--task-color);
     border-radius: .3rem;
-    margin-bottom: 1rem;
-    padding: 2rem 2rem;
+    margin-bottom: 0rem;
+    padding: 0.5rem 0.5rem;
     margin-top: 3.5rem;
 }
 
@@ -210,17 +233,18 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0px;
+    margin: 0px 0px;
     flex-wrap: wrap;
 }
 
 .text-box {
-    width: 900px;
+    width: 800px;
     background-color: #ffffff;
-    border: 1px solid #ececec;
-    margin: 15px;
+    margin: 0px;
+    margin-top: -30px;
     overflow-y: auto;
 }
+
 .text-wrapper {
     /* width: 100%;
     height: 100%; */
@@ -253,8 +277,9 @@ select {
 }
 
 .text gen {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 16px;
+    font-family: var(--nav-font);
+    color: var(--p-color);
 }
 
 .demo {
@@ -283,7 +308,9 @@ select {
     order: 1;
     display: block;
     border-radius: 8px;
-    padding: 1rem 2rem;
+    font-size: 18px;
+    font-family: var(--nav-font);
+    padding: 0.5rem 0.5rem;
     margin-right: 0.2rem;
     cursor: pointer;
     background: #2a2f3b84;
@@ -364,4 +391,18 @@ select {
 .tag.role {
     background-color: var(--tag-color-six);
     color: var(--tag-color-text-six);
+}
+
+bib {
+    width: 100%;
+    background-color: var(--task-color);
+    /* Set the desired grey background color */
+    padding: 1em 1em;
+    /* Optional: Add some padding for better readability */
+    margin: 0;
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    font-family: 'Courier New';
+    font-size: 16px;
 }
