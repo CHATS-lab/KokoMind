@@ -280,7 +280,7 @@ data = [
             1,
             1
         ]
-    }, 
+    },
     {
         "model": "gpt-4",
         "movie_name": "empire_of_light",
@@ -551,7 +551,7 @@ data = [
             1,
             1
         ]
-    }, 
+    },
     {
         "model": "gpt-4",
         "temperature": 1.0,
@@ -1151,69 +1151,69 @@ function change_context() {
 
     // source select
     // var source_index = 0;
-    if (source_selected == 'general'){
-        source_index = Math.floor(Math.random()*5);
+    if (source_selected == 'general') {
+        source_index = Math.floor(Math.random() * 5);
     }
-    else if (source_selected == 'movie'){
-        source_index = Math.floor(Math.random()*5) + 5;
+    else if (source_selected == 'movie') {
+        source_index = Math.floor(Math.random() * 5) + 5;
     }
-    else if (source_selected == 'tomi'){
-        source_index = Math.floor(Math.random()*5) + 10;
+    else if (source_selected == 'tomi') {
+        source_index = Math.floor(Math.random() * 5) + 10;
     }
 
     // question select
     // var question_index = 0;
-    if (question_selected == 'tom'){
+    if (question_selected == 'tom') {
         question_index = 0;
     }
-    else if (question_selected == 'social_norm'){
+    else if (question_selected == 'social_norm') {
         question_index = 1;
     }
-    else if (question_selected == 'emotion'){
+    else if (question_selected == 'emotion') {
         question_index = 2;
     }
-    else if (question_selected == 'social_relation'){
+    else if (question_selected == 'social_relation') {
         question_index = 3;
     }
-    else if (question_selected == 'counterfactual'){
+    else if (question_selected == 'counterfactual') {
         question_index = 4;
     }
-    else if (question_selected == 'social_advice'){
+    else if (question_selected == 'social_advice') {
         question_index = 5;
     }
-    
+
     var context = ""
-    for(let i=0; i<data[source_index]["data"]["Interaction"].length; i++){
+    for (let i = 0; i < data[source_index]["data"]["Interaction"].length; i++) {
         if (!data[source_index]["data"]["Interaction"][i].includes("(")) {
             context += data[source_index]["data"]["Interaction"][i] + "<br />"
-        }else{
+        } else {
             context += data[source_index]["data"]["Interaction"][i].split("(", 1) + "("
             var tags = data[source_index]["data"]["Interaction"][i].split("(", 2)[1].split(")")[0].split(", ")
             if (source_selected == 'tomi' || source_selected == 'movie') {
-                for(let j=0; j<tags.length; j++){
-                    if (j == tags.length-1) {
-                        context += '<span class="tag emotion">'+tags[j]+"</span>"
-                    }else{
-                        context += '<span class="tag emotion">'+tags[j]+"</span>&nbsp;"
+                for (let j = 0; j < tags.length; j++) {
+                    if (j == tags.length - 1) {
+                        context += '<span class="tag emotion">' + tags[j] + "</span>"
+                    } else {
+                        context += '<span class="tag emotion">' + tags[j] + "</span>&nbsp;"
                     }
                 }
             }
             else if (source_selected == 'general') {
                 tag_list = ['emotion', 'gender', 'age', 'role']
-                for(let j=0; j<tags.length; j++){
+                for (let j = 0; j < tags.length; j++) {
                     if (j > 3) {
                         tag_index = 3;
-                    }else{
+                    } else {
                         tag_index = j;
                     }
-                    if (j == tags.length-1) {
-                        context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>"
-                    }else{
-                        context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>&nbsp;"
+                    if (j == tags.length - 1) {
+                        context += '<span class="tag ' + tag_list[tag_index] + '">' + tags[j] + "</span>"
+                    } else {
+                        context += '<span class="tag ' + tag_list[tag_index] + '">' + tags[j] + "</span>&nbsp;"
                     }
                 }
             }
-            context += ")"+ data[source_index]["data"]["Interaction"][i].split(")", 2)[1] + "<br />"
+            context += ")" + data[source_index]["data"]["Interaction"][i].split(")", 2)[1] + "<br />"
         }
     }
 
@@ -1230,57 +1230,57 @@ function change_question() {
     // source select
 
     // question select
-    if (question_selected == 'tom'){
+    if (question_selected == 'tom') {
         question_index = 0;
     }
-    else if (question_selected == 'social_norm'){
+    else if (question_selected == 'social_norm') {
         question_index = 1;
     }
-    else if (question_selected == 'emotion'){
+    else if (question_selected == 'emotion') {
         question_index = 2;
     }
-    else if (question_selected == 'social_relation'){
+    else if (question_selected == 'social_relation') {
         question_index = 3;
     }
-    else if (question_selected == 'counterfactual'){
+    else if (question_selected == 'counterfactual') {
         question_index = 4;
     }
-    else if (question_selected == 'social_advice'){
+    else if (question_selected == 'social_advice') {
         question_index = 5;
     }
-    
+
     var context = ""
-    for(let i=0; i<data[source_index]["data"]["Interaction"].length; i++){
+    for (let i = 0; i < data[source_index]["data"]["Interaction"].length; i++) {
         if (!data[source_index]["data"]["Interaction"][i].includes("(")) {
             context += data[source_index]["data"]["Interaction"][i] + "<br />"
-        }else{
+        } else {
             context += data[source_index]["data"]["Interaction"][i].split("(", 1) + "("
             var tags = data[source_index]["data"]["Interaction"][i].split("(", 2)[1].split(")")[0].split(", ")
             if (source_selected == 'tomi' || source_selected == 'movie') {
-                for(let j=0; j<tags.length; j++){
-                    if (j == tags.length-1) {
-                        context += '<span class="tag emotion">'+tags[j]+"</span>"
-                    }else{
-                        context += '<span class="tag emotion">'+tags[j]+"</span>&nbsp;"
+                for (let j = 0; j < tags.length; j++) {
+                    if (j == tags.length - 1) {
+                        context += '<span class="tag emotion">' + tags[j] + "</span>"
+                    } else {
+                        context += '<span class="tag emotion">' + tags[j] + "</span>&nbsp;"
                     }
                 }
             }
             else if (source_selected == 'general') {
                 tag_list = ['emotion', 'gender', 'age', 'role']
-                for(let j=0; j<tags.length; j++){
+                for (let j = 0; j < tags.length; j++) {
                     if (j > 3) {
                         tag_index = 3;
-                    }else{
+                    } else {
                         tag_index = j;
                     }
-                    if (j == tags.length-1) {
-                        context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>"
-                    }else{
-                        context += '<span class="tag '+tag_list[tag_index]+'">'+tags[j]+"</span>&nbsp;"
+                    if (j == tags.length - 1) {
+                        context += '<span class="tag ' + tag_list[tag_index] + '">' + tags[j] + "</span>"
+                    } else {
+                        context += '<span class="tag ' + tag_list[tag_index] + '">' + tags[j] + "</span>&nbsp;"
                     }
                 }
             }
-            context += ")"+ data[source_index]["data"]["Interaction"][i].split(")", 2)[1] + "<br />"
+            context += ")" + data[source_index]["data"]["Interaction"][i].split(")", 2)[1] + "<br />"
         }
     }
 
@@ -1289,7 +1289,7 @@ function change_question() {
     document.getElementById("answer").innerHTML = data[source_index]["data"]["Answer"][question_index];
 }
 
-document.getElementById('source-select').addEventListener('change', function() {
+document.getElementById('source-select').addEventListener('change', function () {
     let secondSelect = document.getElementById('question-select');
 
     // Clear the second dropdown
@@ -1329,12 +1329,12 @@ document.getElementById('source-select').addEventListener('change', function() {
         secondSelect.add(option6);
 
         secondSelect.options[question_index].selected = true;
-    } 
+    }
     else if (this.value == 'tomi') {
         let option = document.createElement('option');
         option.value = 'tom';
         option.text = 'Theory of Mind';
-        
+
         secondSelect.add(option);
     }
 });
@@ -1347,19 +1347,19 @@ Highcharts.chart('container', {
     series: [{
         keys: ['from', 'to', 'weight'],
         data: [
-            ['GPT-4-only', 'ToM', 48 ],
-            ['GPT-4-only', 'Social Norm', 28 ],
-            ['GPT-4-only', 'Emotion', 48 ],
-            ['GPT-4-only', 'Social Relation', 44 ],
-            ['GPT-4-only', 'Counterfactual', 28 ],
-            ['GPT-4-only', 'Social Advice', 29 ], 
-            ['Movie-based', 'ToM', 47 ],
-            ['Movie-based', 'Social Norm', 36 ],
-            ['Movie-based', 'Emotion', 33 ],
-            ['Movie-based', 'Social Relation', 40 ],
-            ['Movie-based', 'Counterfactual', 43 ],
-            ['Movie-based', 'Social Advice', 46 ], 
-            ['ToMi-based', 'ToM', 300 ]
+            ['GPT-4-only', 'ToM', 48],
+            ['GPT-4-only', 'Social Norm', 28],
+            ['GPT-4-only', 'Emotion', 48],
+            ['GPT-4-only', 'Social Relation', 44],
+            ['GPT-4-only', 'Counterfactual', 28],
+            ['GPT-4-only', 'Social Advice', 29],
+            ['Movie-based', 'ToM', 47],
+            ['Movie-based', 'Social Norm', 36],
+            ['Movie-based', 'Emotion', 33],
+            ['Movie-based', 'Social Relation', 40],
+            ['Movie-based', 'Counterfactual', 43],
+            ['Movie-based', 'Social Advice', 46],
+            ['ToMi-based', 'ToM', 300]
         ],
         type: 'sankey',
         name: 'KokoMind'
@@ -1370,7 +1370,7 @@ Highcharts.chart('container', {
 var fig_source_index = 0;
 var fig_question_index = 0;
 
-document.getElementById('fig-source').addEventListener('change', function() {
+document.getElementById('fig-source').addEventListener('change', function () {
     let secondSelect = document.getElementById('fig-question');
 
     // Clear the second dropdown
@@ -1381,11 +1381,11 @@ document.getElementById('fig-source').addEventListener('change', function() {
         let option = document.createElement('option');
         option.value = 'question-tom';
         option.text = 'Theory of Mind';
-        
+
         secondSelect.add(option);
         fig_question_index = 1;
     }
-    else{
+    else {
         let option0 = document.createElement('option');
         option0.value = 'question-total';
         option0.text = 'Total';
@@ -1436,93 +1436,93 @@ function fig_change() {
 
     // source select
     // var source_index = 0;
-    if (source_selected == 'source-total'){
+    if (source_selected == 'source-total') {
         fig_source_index = 0;
     }
-    else if(source_selected == 'source-general'){
+    else if (source_selected == 'source-general') {
         fig_source_index = 1;
     }
-    else if (source_selected == 'source-movie'){
+    else if (source_selected == 'source-movie') {
         fig_source_index = 2;
     }
-    else if (source_selected == 'source-tomi'){
+    else if (source_selected == 'source-tomi') {
         fig_source_index = 3;
     }
 
     // question select
     // var question_index = 0;
-    if (question_selected == 'question-total'){
+    if (question_selected == 'question-total') {
         fig_question_index = 0;
     }
-    else if (question_selected == 'question-tom'){
+    else if (question_selected == 'question-tom') {
         fig_question_index = 1;
     }
-    else if (question_selected == 'question-social_norm'){
+    else if (question_selected == 'question-social_norm') {
         fig_question_index = 2;
     }
-    else if (question_selected == 'question-emotion'){
+    else if (question_selected == 'question-emotion') {
         fig_question_index = 3;
     }
-    else if (question_selected == 'question-social_relation'){
+    else if (question_selected == 'question-social_relation') {
         fig_question_index = 4;
     }
-    else if (question_selected == 'question-counterfactual'){
+    else if (question_selected == 'question-counterfactual') {
         fig_question_index = 5;
     }
-    else if (question_selected == 'question-social_advice'){
+    else if (question_selected == 'question-social_advice') {
         fig_question_index = 6;
     }
-    
+
     // var img = document.createElement('img');
     var img = document.getElementById('fig');
-    var path = "img/"
-    if (context_selected == 'context-emotion'){
+    var path = "website/img/"
+    if (context_selected == 'context-emotion') {
         path += "emotion_yes/"
     }
-    else{ 
+    else {
         path += "emotion_no/"
     }
 
-    if (reviewer_selected == 'reviewer-gpt4'){
+    if (reviewer_selected == 'reviewer-gpt4') {
         path += "gpt4/"
     }
-    else{ 
+    else {
         path += "claude/"
     }
 
-    if (source_selected == 'source-total'){
+    if (source_selected == 'source-total') {
         path += "total/"
     }
-    else if (source_selected == 'source-general'){ 
+    else if (source_selected == 'source-general') {
         path += "general/"
     }
-    else if (source_selected == 'source-movie'){ 
+    else if (source_selected == 'source-movie') {
         path += "movie/"
     }
-    else if (source_selected == 'source-tomi'){ 
+    else if (source_selected == 'source-tomi') {
         path += "tomi/"
         question_selected = 'question-tom'
     }
-    
-    if (question_selected == 'question-total'){
+
+    if (question_selected == 'question-total') {
         path += "Total/"
     }
-    else if (question_selected == 'question-tom'){ 
+    else if (question_selected == 'question-tom') {
         path += "ToM/"
     }
-    else if (question_selected == 'question-social_norm'){ 
+    else if (question_selected == 'question-social_norm') {
         path += "Social Norm/"
     }
-    else if (question_selected == 'question-emotion'){ 
+    else if (question_selected == 'question-emotion') {
         path += "Emotion/"
     }
-    else if (question_selected == 'question-social_relation'){ 
+    else if (question_selected == 'question-social_relation') {
         path += "Social Relation/"
     }
-    else if (question_selected == 'question-counterfactual'){ 
+    else if (question_selected == 'question-counterfactual') {
         path += "Counterfactual/"
     }
-    else if (question_selected == 'question-social_advice'){ 
+    else if (question_selected == 'question-social_advice') {
         path += "Advice/"
     }
     img.src = path + 'win_rate.png';
@@ -1533,7 +1533,7 @@ function fig_change() {
 var fig1_source_index = 0;
 var fig1_question_index = 0;
 
-document.getElementById('fig1-source').addEventListener('change', function() {
+document.getElementById('fig1-source').addEventListener('change', function () {
     let secondSelect = document.getElementById('fig1-question');
 
     // Clear the second dropdown
@@ -1544,11 +1544,11 @@ document.getElementById('fig1-source').addEventListener('change', function() {
         let option = document.createElement('option');
         option.value = 'question-tom';
         option.text = 'Theory of Mind';
-        
+
         secondSelect.add(option);
         fig1_question_index = 1;
     }
-    else{
+    else {
         let option0 = document.createElement('option');
         option0.value = 'question-total';
         option0.text = 'Total';
@@ -1599,93 +1599,93 @@ function fig1_change() {
 
     // source select
     // var source_index = 0;
-    if (source_selected == 'source-total'){
+    if (source_selected == 'source-total') {
         fig1_source_index = 0;
     }
-    else if(source_selected == 'source-general'){
+    else if (source_selected == 'source-general') {
         fig1_source_index = 1;
     }
-    else if (source_selected == 'source-movie'){
+    else if (source_selected == 'source-movie') {
         fig1_source_index = 2;
     }
-    else if (source_selected == 'source-tomi'){
+    else if (source_selected == 'source-tomi') {
         fig1_source_index = 3;
     }
 
     // question select
     // var question_index = 0;
-    if (question_selected == 'question-total'){
+    if (question_selected == 'question-total') {
         fig1_question_index = 0;
     }
-    else if (question_selected == 'question-tom'){
+    else if (question_selected == 'question-tom') {
         fig1_question_index = 1;
     }
-    else if (question_selected == 'question-social_norm'){
+    else if (question_selected == 'question-social_norm') {
         fig1_question_index = 2;
     }
-    else if (question_selected == 'question-emotion'){
+    else if (question_selected == 'question-emotion') {
         fig1_question_index = 3;
     }
-    else if (question_selected == 'question-social_relation'){
+    else if (question_selected == 'question-social_relation') {
         fig1_question_index = 4;
     }
-    else if (question_selected == 'question-counterfactual'){
+    else if (question_selected == 'question-counterfactual') {
         fig1_question_index = 5;
     }
-    else if (question_selected == 'question-social_advice'){
+    else if (question_selected == 'question-social_advice') {
         fig1_question_index = 6;
     }
-    
+
     // var img = document.createElement('img');
     var img = document.getElementById('fig1');
-    var path = "img/"
-    if (context_selected == 'context-emotion'){
+    var path = "website/img/"
+    if (context_selected == 'context-emotion') {
         path += "emotion_yes/"
     }
-    else{ 
+    else {
         path += "emotion_no/"
     }
 
-    if (reviewer_selected == 'reviewer-gpt4'){
+    if (reviewer_selected == 'reviewer-gpt4') {
         path += "gpt4/"
     }
-    else{ 
+    else {
         path += "claude/"
     }
 
-    if (source_selected == 'source-total'){
+    if (source_selected == 'source-total') {
         path += "total/"
     }
-    else if (source_selected == 'source-general'){ 
+    else if (source_selected == 'source-general') {
         path += "general/"
     }
-    else if (source_selected == 'source-movie'){ 
+    else if (source_selected == 'source-movie') {
         path += "movie/"
     }
-    else if (source_selected == 'source-tomi'){ 
+    else if (source_selected == 'source-tomi') {
         path += "tomi/"
         question_selected = 'question-tom'
     }
-    
-    if (question_selected == 'question-total'){
+
+    if (question_selected == 'question-total') {
         path += "Total/"
     }
-    else if (question_selected == 'question-tom'){ 
+    else if (question_selected == 'question-tom') {
         path += "ToM/"
     }
-    else if (question_selected == 'question-social_norm'){ 
+    else if (question_selected == 'question-social_norm') {
         path += "Social Norm/"
     }
-    else if (question_selected == 'question-emotion'){ 
+    else if (question_selected == 'question-emotion') {
         path += "Emotion/"
     }
-    else if (question_selected == 'question-social_relation'){ 
+    else if (question_selected == 'question-social_relation') {
         path += "Social Relation/"
     }
-    else if (question_selected == 'question-counterfactual'){ 
+    else if (question_selected == 'question-counterfactual') {
         path += "Counterfactual/"
     }
-    else if (question_selected == 'question-social_advice'){ 
+    else if (question_selected == 'question-social_advice') {
         path += "Advice/"
     }
     img.src = path + 'win_rate.png';
