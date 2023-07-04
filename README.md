@@ -28,7 +28,7 @@ For each social interaction, we ask various questions designed to probe the foll
 
 `question_nonverbal_yes_v0.1.json` contains 770 samples in total. This [JSON Lines](https://jsonlines.org/) file is a list of dictionaries, with each dictionary contains the following fields:
 
-- `quesiton_id`: int, the unique ID of the question.
+- `question_id`: int, the unique ID of the question.
 - `text`: str, social interaction context and question.
 - `answer`: str, GPT-4 answer that has been further verified by human.
 - `source`: str, one of the three data sources: `gpt-4`, `movie`, `tomi`.
