@@ -1,4 +1,5 @@
-# KokoMind
+# <img src="./website/img/gorilla.png" style="width:10%; height:auto;"> KokoMind 
+
 
 Download data and evaluate your model on [KokoMind](https://chats-lab.github.io/KokoMind).
 
