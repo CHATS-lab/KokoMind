@@ -6,20 +6,27 @@
 This is the repo for **KokoMind**, a dataset with multi-party social interactions to evaluate LLMs' social understanding abilities. The repo contains:
 
 - The evaluation [data](https://github.com/CHATS-lab/KokoMind/tree/main/data) of social interactions.
-- The [code](https://github.com/CHATS-lab/KokoMind/tree/main/eval) for evaluating the model.
-- The code for [KokoMind website](https://chats-lab.github.io/KokoMind).
+- The [code](https://github.com/CHATS-lab/KokoMind/tree/main/eval) for model evaluation.
+- Check out the [blog post of KokoMind](https://chats-lab.github.io/KokoMind).
 
-[[Project Page](https://chats-lab.github.io/KokoMind/)] [Paper]
+<!-- [[Project Page](https://chats-lab.github.io/KokoMind/)] [Paper] -->
 
 <p align="center">
     <img src="./website/img/gorilla.png" width="15%"> <br>
-  Logo for <b>KokoMind</b>.
+  Logo of <b>KokoMind</b>.
 </p>
 
 ## News
 
 - **[2023.07.05]** **KokoMind** is released at https://chats-lab.github.io/KokoMind/.
 
+## Demo
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true" poster="website/img/thumbnail.png">
+    <source src="./website/video/demo1.mp4" type="video/mp4">
+  </video>
+</figure>
+<!-- [![Alt Text](website/img/thumbnail.png)](./website/video/demo1.mp4) -->
 
 
 ## Dataset
