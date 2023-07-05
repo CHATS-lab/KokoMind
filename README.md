@@ -7,7 +7,7 @@ This is the repo for **KokoMind**, a dataset with multi-party social interaction
 
 - The evaluation [data](https://github.com/CHATS-lab/KokoMind/tree/main/data) of social interactions.
 - The [code](https://github.com/CHATS-lab/KokoMind/tree/main/eval) for model evaluation.
-- Check out the [blog post of KokoMind](https://chats-lab.github.io/KokoMind).
+- Check out the [blog post of KokoMind](https://chats-lab.github.io/KokoMind) to see some demos.
 
 <!-- [[Project Page](https://chats-lab.github.io/KokoMind/)] [Paper] -->
 
@@ -21,12 +21,12 @@ This is the repo for **KokoMind**, a dataset with multi-party social interaction
 - **[2023.07.05]** **KokoMind** is released at https://chats-lab.github.io/KokoMind/.
 
 ## Demo
-<!-- <figure class="video_container">
+<figure class="video_container">
   <video controls="true" allowfullscreen="true" poster="website/img/thumbnail.png">
     <source src="./website/video/demo1.mp4" type="video/mp4">
   </video>
-</figure> -->
-[![Alt Text](website/img/thumbnail.png)](./website/video/demo1.mp4)
+</figure>
+<!-- [![Alt Text](website/img/thumbnail.png)](./website/video/demo1.mp4) -->
 
 
 ## Dataset
