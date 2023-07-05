@@ -28,6 +28,7 @@ This is the repo for **KokoMind**, a dataset with multi-party social interaction
 </figure>
 <!-- [![Alt Text](website/img/thumbnail.png)](./website/video/demo1.mp4) -->
 
+https://github.com/CHATS-lab/KokoMind/assets/13882237/6f83692c-6a30-4ba4-94bf-152cae3feffb
 
 ## Dataset
 
