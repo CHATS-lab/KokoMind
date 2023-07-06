@@ -104,12 +104,11 @@ We would like to thank [Yejin Choi](https://homes.cs.washington.edu/~yejin/) fro
 Please cite our work if you find it useful.
 
 ``` bib
-@misc{kokomind2023,
-title = {KokoMind: Can Large Language Models Understand Social Interactions?},
-url = {https://chats-lab.github.io/KokoMind/},
-author = {Shi, Weiyan and Qiu, Liang and Xu, Dehong and Sui, Pengwei and Lu, Pan and Yu,
-Zhou},
-month = {July},
-year = {2023}
+@misc{Shi_KokoMind_Can_Large_2023,
+  author = {Shi, Weiyan and Qiu, Liang and Xu, Dehong and Sui, Pengwei and Lu, Pan and Yu, Zhou},
+  title = {{KokoMind: Can Large Language Models Understand Social Interactions?}},
+  month = jul,
+  year = {2023},
+  url = {https://chats-lab.github.io/KokoMind/}
 }
 ```
