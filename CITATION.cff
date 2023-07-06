@@ -1,9 +1,6 @@
 cff-version: 1.2.0
 message: If you use this software, please cite it as below.
 title: "KokoMind: Can Large Language Models Understand Social Interactions?"
-url: https://chats-lab.github.io/KokoMind/
-repository-code: https://github.com/CHATS-lab/KokoMind
-type: misc
 authors:
   - family-names: Shi
     given-names: Weiyan
@@ -17,5 +14,24 @@ authors:
     given-names: Pan
   - family-names: Yu
     given-names: Zhou
-month: July
-year: 2023
+date-released: 2023-07-05
+url: https://github.com/CHATS-lab/KokoMind
+preferred-citation:
+  type: data
+  title: "KokoMind: Can Large Language Models Understand Social Interactions?"
+  authors:
+  - family-names: Shi
+    given-names: Weiyan
+  - family-names: Qiu
+    given-names: Liang
+  - family-names: Xu
+    given-names: Dehong
+  - family-names: Sui
+    given-names: Pengwei
+  - family-names: Lu
+    given-names: Pan
+  - family-names: Yu
+    given-names: Zhou
+  month: 7
+  year: 2023
+  url: https://chats-lab.github.io/KokoMind/
