@@ -97,7 +97,7 @@ This project is an early-stage research showcase, designed solely for non-commer
 
 ## Acknowledgement
 
-We would like to thank [Yejin Choi](https://homes.cs.washington.edu/~yejin/) from UW, [Louis-Philippe Morency](https://www.cs.cmu.edu/~morency/) from CMU, [Jason Weston](https://scholar.google.com/citations?user=lMkTx0EAAAAJ&hl=en) from Meta, and [Diyi Yang](https://cs.stanford.edu/~diyiy/) from Stanford for their enlightening dialogues and constructive inputs. The theoretical foundation of KokoMind is based on Liang's PhD research with [Song-Chun Zhu](https://zhusongchun.net/) from Peking University, Tsinghua University and Beijing Institute for General Artificial Intelligence (BIGAI) and [YingNian Wu](https://scholar.google.com/citations?user=7k_1QFIAAAAJ&hl=en) from UCLA.
+We would like to thank [Yejin Choi](https://homes.cs.washington.edu/~yejin/) from UW, [Louis-Philippe Morency](https://www.cs.cmu.edu/~morency/) from CMU, [Jason Weston](https://scholar.google.com/citations?user=lMkTx0EAAAAJ&hl=en) from Meta, and [Diyi Yang](https://cs.stanford.edu/~diyiy/) from Stanford for their enlightening dialogues and constructive inputs. The theoretical foundation of KokoMind is based on Liang's PhD research with [Song-Chun Zhu](https://zhusongchun.net/) from Peking University, Tsinghua University and Beijing Institute for General Artificial Intelligence (BIGAI) and [Ying Nian Wu](https://scholar.google.com/citations?user=7k_1QFIAAAAJ&hl=en) from UCLA.
 
 ## Citation
 
